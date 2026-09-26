@@ -17,15 +17,6 @@ A ready-to-deploy Flask web application for online bus ticket/pass booking.
 - Render/Gunicorn deployment configuration
 - Responsive UI
 
-## Run locally
-
-```bash
-pip install -r requirements.txt
-python app.py
-```
-
-Open: http://127.0.0.1:5000
-
 ## Deploy on Render
 
 1. Create a GitHub repository.
