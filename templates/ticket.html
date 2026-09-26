@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="ticket">
+
+<h2>🎫 Booking Confirmed</h2>
+
+<h3>{{booking.booking_id}}</h3>
+
+<p><b>Passenger:</b> {{booking.passenger}}</p>
+
+<p>
+<b>Route:</b>
+{{bus["from"]}} → {{bus["to"]}}
+</p>
+
+<p><b>Bus:</b> {{bus.name}}</p>
+
+<p><b>Date:</b> {{booking.journey_date}}</p>
+
+<p><b>Seat:</b> {{booking.seat_no}}</p>
+
+<p><b>Fare:</b> ₹{{booking.price}}</p>
+
+<p><b>Status:</b> {{booking.status}}</p>
+
+<hr>
+
+<p class="small">
+Keep this booking ID for ticket verification.
+</p>
+
+<button onclick="window.print()">
+Print / Save PDF
+</button>
+
+</div>
+
+{% endblock %}
