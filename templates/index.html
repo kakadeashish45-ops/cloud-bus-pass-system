@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CloudBus Pass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{font-family:Arial;margin:0;background:#f4f7fb;color:#172033}
+        nav{background:#102a43;color:white;padding:18px 6%;display:flex;justify-content:space-between}
+        nav a{color:white;text-decoration:none;margin-left:20px}
+        .container{max-width:1050px;margin:30px auto;padding:0 18px}
+        .hero{background:#1769aa;color:white;padding:35px;border-radius:16px}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px}
+        .card{background:white;padding:22px;border-radius:14px;box-shadow:0 5px 18px #0001}
+        .btn,button{background:#1769aa;color:white;border:0;padding:11px 17px;border-radius:8px;text-decoration:none;cursor:pointer}
+    </style>
+</head>
+<body>
+<nav>
+    <strong>🚌 CloudBus Pass</strong>
+    <span>
+        <a href="/">Home</a>
+        <a href="/verify">Verify Ticket</a>
+        <a href="/admin">Admin</a>
+    </span>
+</nav>
 
+<div class="container">
+    <div class="hero">
+        <h1>Cloud-Based Bus Pass System</h1>
+        <p>Fast, secure and reliable online bus ticket booking.</p>
+    </div>
+
+    <h2>Available Bus Services</h2>
+
+    <div class="grid">
+        {% for b in buses %}
+        <div class="card">
+            <h3>{{ b.name }}</h3>
+            <p><b>{{ b["from"] }}</b> → <b>{{ b["to"] }}</b></p>
+            <p>Departure: {{ b.time }}</p>
+            <p>Fare: <b>₹{{ b.price }}</b></p>
+            <p>Capacity: {{ b.seats }} seats</p>
+            <a class="btn" href="{{ url_for('book', bus_id=b.id) }}">Book Pass</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
