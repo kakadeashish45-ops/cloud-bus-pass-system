@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="formbox">
+
+<h2>Verify Bus Pass</h2>
+
+<form method="post">
+
+<input
+name="booking_id"
+placeholder="Enter booking ID e.g. BP-XXXXXXXXXX"
+required>
+
+<button type="submit">Verify</button>
+
+</form>
+
+{% if booking %}
+
+<hr>
+
+<h3>✅ Valid Ticket</h3>
+
+<p>
+<b>{{booking.passenger}}</b>
+|
+{{bus["from"]}} → {{bus["to"]}}
+</p>
+
+<p>
+Date: {{booking.journey_date}}
+|
+Seat: {{booking.seat_no}}
+|
+Fare: ₹{{booking.price}}
+</p>
+
+{% endif %}
+
+</div>
+
+{% endblock %}
