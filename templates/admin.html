@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Booking Dashboard</h2>
+
+<table>
+
+<tr>
+<th>Booking ID</th>
+<th>Passenger</th>
+<th>Bus</th>
+<th>Date</th>
+<th>Seat</th>
+<th>Fare</th>
+<th>Status</th>
+</tr>
+
+{% for b in bookings %}
+
+<tr>
+
+<td>{{b.booking_id}}</td>
+
+<td>{{b.passenger}}</td>
+
+<td>{{bus_by_id(b.bus_id).name}}</td>
+
+<td>{{b.journey_date}}</td>
+
+<td>{{b.seat_no}}</td>
+
+<td>₹{{b.price}}</td>
+
+<td>{{b.status}}</td>
+
+</tr>
+
+{% else %}
+
+<tr>
+<td colspan="7">No bookings yet.</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
