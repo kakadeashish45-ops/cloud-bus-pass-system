@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="formbox">
+<h2>Book: {{bus.name}}</h2>
+
+<p>
+{{bus["from"]}} → {{bus["to"]}}
+| Fare: <b>₹{{bus.price}}</b>
+</p>
+
+<form method="post">
+
+<label>Passenger Name</label>
+<input name="passenger" required>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Phone</label>
+<input name="phone" required>
+
+<label>Journey Date</label>
+<input type="date"
+       name="journey_date"
+       value="{{journey_date}}"
+       required>
+
+<label>Select Seat</label>
+
+<div class="seats">
+{% for s in range(1,bus.seats+1) %}
+
+<label class="seat {% if s in occupied %}booked{% endif %}">
+
+<input type="radio"
+       name="seat_no"
+       value="{{s}}"
+       {% if s in occupied %}disabled{% endif %}
+       required>
+
+{{s}}
+
+</label>
+
+{% endfor %}
+</div>
+
+<button type="submit">Confirm & Generate Pass</button>
+
+</form>
+</div>
+
+{% endblock %}
